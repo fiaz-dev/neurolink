@@ -1,3 +1,24 @@
+Metadata-Version: 2.1
+Name: neurolink
+Version: 0.0.0
+Summary: NeuroLink is a Python package in active development that aims to provide various AI capabilities, including a chatbot, image processing, audio processing, Django & Flask support, and more.
+Home-page: https://github.com/muhammad-fiaz/neurolink
+Author: Muhammad Fiaz
+Author-email: 
+License: Apache Software License (Apache 2.0)
+Project-URL: Tags, tensorflow, tensor, machine, learning
+Keywords: neural networks,neurolink,machine learning,artificial intelligence,ai,ml,chatbot,image processing,audio processing,django,flask
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+
 <p align="center">
   <img src="https://github.com/muhammad-fiaz/neurolink/assets/75434191/82fbf702-43e2-46e6-8e01-11758fa26310" alt="Neurolink GIF" width="500" height="auto">
 </p>
@@ -33,33 +54,13 @@ The NeuroLink package is designed to offer developers an easy and efficient way 
 
 ## Installation
 
-**NOTE: This package is still in development and not yet Stable. Use it at your own risk.**
+**NOTE: This package is still in development and not yet available on PyPI. Use it at your own risk.**
 
-this package is released, it can be installed using pip:
+Once the package is released, it can be installed using pip:
 
 ```bash
 pip install neurolink
 ```
-To update neurolink to the latest version, add --upgrade flag to the above commands.
-
-## Try your first NeuroLink program
-    
-    import neurolink
-    
-    """
-    Sample Test Case to get a response from the chatbot
-    """
-
-    intents_path = "intents.json"
-    model_path = "model.tflearn"
-    data_path = "data.pickle"
-    initialize_obj = neurolink.initialize(intents_path, model_path, data_path, train_model=True)
-    response = initialize_obj.chat("Hi", 0.5)
-    print(response)
-
-**Above model is for reference, its uses intents.json for dataset and sample format that is used to create simple chatbot [check out here](https://github.com/muhammad-fiaz/neurolink/blob/master/intents.json)**
-
-⚠️ Note: The project is currently in active development, and some features may not work properly on older versions. It is recommended to upgrade to the latest version for optimal performance and compatibility.
 
 ## Dependencies
 
@@ -71,7 +72,6 @@ This project utilizes the following third-party libraries:
 - [NumPy](https://numpy.org/): A fundamental package for scientific computing with Python.
 - [NLTK](https://www.nltk.org/): A platform for building Python programs to work with human language data.
 
-💪 ARM Installation: The necessary libraries are automatically installed when you install the package. You can directly use the provided code without any additional installation steps.
 For more information about each library, please refer to their respective documentation links above.
 
 ## Documentation
