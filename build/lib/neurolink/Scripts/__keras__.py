@@ -70,8 +70,7 @@ def chat(message, confidence_threshold, intents_path, model_path, data_path, sho
     response = predict_intent(message, model, words, labels)
     if response:
         return response
-    else:
-        return "Sorry, I don't understand. Please try again."
+    return "Sorry, I don't understand. Please try again."
 
 
 class botModel_keras:

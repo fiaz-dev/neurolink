@@ -25,7 +25,7 @@ class initialize:
             response = tfl(self.intents_path, self.model_path, self.data_path, self.train_model)
             response = response.tfl(message, accuracy)
             return response
-        elif model == "keras":
+        if model == "keras":
             response = initialize_keras_model(self.intents_path, self.model_path, self.data_path, self.train_model)
             response = response.keras(message, accuracy)
             return response
