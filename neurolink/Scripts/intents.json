@@ -1,0 +1,101 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi",
+        "Hello",
+        "Hey there",
+        "Greetings",
+        "What's up",
+        "welcome",
+        "hi there",
+        "hello there",
+        "hello world",
+        "hey",
+        "whats up bro"
+      ],
+      "responses": [
+        "Hello! I'm neurolink, how can I assist you?",
+        "Hey there! How can I help you today?",
+        "Greetings! How may I assist you?",
+        "Hi! I'm neurolink. What can I do for you?",
+        "Good day! How can I assist you?",
+        "Hiya! How can I help you today?",
+        "Howdy! What can I do for you?",
+        "Salutations! How may I assist you?",
+        "Namaste! How can I help you?",
+        "Heya! What can I do for you today?",
+        "Sup! How can I assist you?",
+        "Yo! How may I help you?",
+        "Hi friend! What can I do for you?",
+        "Hey buddy! How can I assist you?",
+        "What's happening! How may I help you?"
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "Bye",
+        "Goodbye",
+        "See you later",
+        "Adios",
+        "Ciao",
+        "Farewell",
+        "Take care",
+        "Have a good one",
+        "Until next time",
+        "So long",
+        "Catch you later",
+        "Peace out",
+        "Bye for now",
+        "Cheers",
+        "Ta-ta",
+        "Adieu",
+        "Hasta la vista",
+        "Later, alligator",
+        "Till we meet again",
+        "Toodle-oo"
+      ],
+      "responses": [
+        "Goodbye! It was nice chatting with you.",
+        "Bye! Have a great day.",
+        "See you later! Take care.",
+        "Adios! Come back soon.",
+        "Ciao! Bye for now.",
+        "Farewell! Have a good one.",
+        "Take care! See you soon.",
+        "Have a good one! Bye.",
+        "Until next time! Goodbye.",
+        "So long! Have a great day.",
+        "Catch you later! Bye.",
+        "Peace out! See you soon.",
+        "Bye for now! Talk to you later.",
+        "Cheers! Have a good one.",
+        "Ta-ta! See you later.",
+        "Adieu! Goodbye.",
+        "Hasta la vista! See you soon.",
+        "Later, alligator! Have a great day.",
+        "Till we meet again! Bye.",
+        "Toodle-oo! See you later."
+      ]
+    },
+    {
+      "tag": "unknown",
+      "patterns": [
+        "Sorry, I didn't understand",
+        "Can you repeat that please?",
+        "I'm not sure what you mean",
+        "What do you mean?",
+        "Could you clarify?"
+      ],
+      "responses": [
+        "I'm sorry, I didn't quite understand. Could you please rephrase your question?",
+        "I'm not sure what you're asking. Could you please clarify?",
+        "I'm sorry, I'm still learning and may not understand everything. Could you please explain further?",
+        "I'm not sure what you mean. Could you please provide more context?",
+        "I apologize, but I didn't understand. Could you please try asking your question in a different way?"
+      ]
+    }
+  ]
+}
