@@ -54,13 +54,33 @@ The NeuroLink package is designed to offer developers an easy and efficient way 
 
 ## Installation
 
-**NOTE: This package is still in development and not yet available on PyPI. Use it at your own risk.**
+**NOTE: This package is still in development and not yet Stable. Use it at your own risk.**
 
-Once the package is released, it can be installed using pip:
+this package is released, it can be installed using pip:
 
 ```bash
 pip install neurolink
 ```
+To update neurolink to the latest version, add --upgrade flag to the above commands.
+
+## Try your first NeuroLink program
+    
+    import neurolink
+    
+    """
+    Sample Test Case to get a response from the chatbot
+    """
+
+    intents_path = "intents.json"
+    model_path = "model.tflearn"
+    data_path = "data.pickle"
+    initialize_obj = neurolink.initialize(intents_path, model_path, data_path, train_model=True)
+    response = initialize_obj.chat("Hi", 0.5)
+    print(response)
+
+**Above model is for reference, its uses intents.json for dataset and sample format that is used to create simple chatbot [check out here](https://github.com/muhammad-fiaz/neurolink/blob/master/intents.json)**
+
+⚠️ Note: The project is currently in active development, and some features may not work properly on older versions. It is recommended to upgrade to the latest version for optimal performance and compatibility.
 
 ## Dependencies
 
@@ -72,6 +92,7 @@ This project utilizes the following third-party libraries:
 - [NumPy](https://numpy.org/): A fundamental package for scientific computing with Python.
 - [NLTK](https://www.nltk.org/): A platform for building Python programs to work with human language data.
 
+💪 ARM Installation: The necessary libraries are automatically installed when you install the package. You can directly use the provided code without any additional installation steps.
 For more information about each library, please refer to their respective documentation links above.
 
 ## Documentation

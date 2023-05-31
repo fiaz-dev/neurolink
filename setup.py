@@ -55,7 +55,10 @@ setup(
     license='Apache Software License (Apache 2.0)',  # License metadata
     # Tags metadata
     project_urls={
-        'Tags': 'tensorflow, tensor, machine, learning',
+        'Source Code': 'https://github.com/muhammad-fiaz/neurolink',
+        'Bug Tracker': 'https://github.com/muhammad-fiaz/neurolink/issues',
+        'Documentation': 'https://github.com/muhammad-fiaz',
+
     },
 )
 

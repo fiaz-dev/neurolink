@@ -3,6 +3,7 @@ README.md
 setup.py
 neurolink/__init__.py
 neurolink/help.py
+neurolink/neurolink.py
 neurolink.egg-info/PKG-INFO
 neurolink.egg-info/SOURCES.txt
 neurolink.egg-info/dependency_links.txt

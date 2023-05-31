@@ -13,7 +13,7 @@ from neurolink.include import __load__
 
 stemmer = PorterStemmer()
 
-model_path = os.path.abspath("intents.json")
+model_path = os.path.abspath("../../intents.json")
 
 intents = __load__.load_data(model_path)
 
@@ -186,7 +186,7 @@ train_model = True
 if train_model:
     train()
 
-intents_path = os.path.abspath("intents.json")
+intents_path = os.path.abspath("../../intents.json")
 data_path = os.path.abspath("data.pth")
 threshold = 0.75
 
