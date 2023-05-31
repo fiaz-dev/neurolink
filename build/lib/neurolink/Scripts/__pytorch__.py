@@ -5,7 +5,6 @@ import nltk
 import numpy as np
 import torch
 import torch.nn as nn
-from nltk import LancasterStemmer
 from torch.utils.data import Dataset, DataLoader
 from nltk.stem.porter import PorterStemmer
 
