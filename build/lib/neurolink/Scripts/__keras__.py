@@ -2,7 +2,6 @@ import numpy as np
 from tensorflow import keras
 from nltk.stem.lancaster import LancasterStemmer
 import nltk
-import os
 import pickle
 from neurolink.include import __load__
 from neurolink.include.__process__ import *
