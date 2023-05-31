@@ -1,7 +1,5 @@
-import os
-
-from neurolink.Scripts.__tflearn__ import chat
-
+from neurolink.Scripts.Engines.__tflearn__ import initialize as tfl
+from neurolink.Scripts.Engines.__keras__ import initialize_keras_model
 
 class initialize:
     """
@@ -15,14 +13,19 @@ class initialize:
     print(response)
 
     """
+
     def __init__(self, intents_path, model_path, data_path, train_model=True):
         self.intents_path = intents_path
         self.model_path = model_path
         self.data_path = data_path
         self.train_model = train_model
 
-    def chat(self, message, accuracy):
-        response = chat(message, accuracy, self.intents_path, self.model_path, self.data_path, self.train_model)
-        return response
-
-
+    def chat(self, message, accuracy, model):
+        if model == "tfl":
+            response = tfl(self.intents_path, self.model_path, self.data_path, self.train_model)
+            response = response.tfl(message, accuracy)
+            return response
+        elif model == "keras":
+            response = initialize_keras_model(self.intents_path, self.model_path, self.data_path, self.train_model)
+            response = response.keras(message, accuracy)
+            return response

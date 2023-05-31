@@ -122,6 +122,6 @@ print(response)
         self.data_path = data_path
         self.train_model = train_model
 
-    def chat(self, message, accuracy):
+    def tfl(self, message, accuracy):
         response = chat(message, accuracy, self.intents_path, self.model_path, self.data_path, self.train_model)
         return response

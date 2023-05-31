@@ -1,6 +1,4 @@
-import os
-
-from neurolink.Scripts.__tflearn__ import chat
+from neurolink.Scripts.Engines.__tflearn__ import chat
 
 
 class initialize:

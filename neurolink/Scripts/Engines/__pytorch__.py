@@ -1,41 +1,15 @@
+import json
 import os
 import random
-import json
+
 import nltk
 import numpy as np
 import torch
 import torch.nn as nn
-from nltk import LancasterStemmer
-from torch.utils.data import Dataset, DataLoader
 from nltk.stem.porter import PorterStemmer
-
-from neurolink.include import __load__
+from torch.utils.data import DataLoader, Dataset
 
 stemmer = PorterStemmer()
-
-model_path = os.path.abspath("../../intents.json")
-
-intents = __load__.load_data(model_path)
-
-
-def bag_of_words(tokenized_sentence, words):
-    # Stem each word
-    sentence_words = [stem(word) for word in tokenized_sentence]
-    # Initialize bag with 0 for each word
-    bag = np.zeros(len(words), dtype=np.float32)
-    for idx, w in enumerate(words):
-        if w in sentence_words:
-            bag[idx] = 1
-    return bag
-
-
-def tokenize(sentence):
-    return nltk.word_tokenize(sentence)
-
-
-def stem(word):
-    return stemmer.stem(word.lower())
-
 
 class ChatDataset(Dataset):
     def __init__(self, X, y):
@@ -49,6 +23,16 @@ class ChatDataset(Dataset):
     def __len__(self):
         return self.n_samples
 
+
+def bag_of_words(tokenized_sentence, words):
+    # Stem each word
+    sentence_words = [stem(word) for word in tokenized_sentence]
+    # Initialize bag with 0 for each word
+    bag = np.zeros(len(words), dtype=np.float32)
+    for idx, w in enumerate(words):
+        if w in sentence_words:
+            bag[idx] = 1
+    return bag
 
 class NeuralNet(nn.Module):
     def __init__(self, input_size, hidden_size, num_classes):
@@ -69,7 +53,18 @@ class NeuralNet(nn.Module):
 
 
 
-def __preprocess_data__(intents):
+def tokenize(sentence):
+    return nltk.word_tokenize(sentence)
+
+
+def stem(word):
+    return stemmer.stem(word.lower())
+
+
+
+
+
+def preprocess_data(intents):
     all_words = []
     tags = []
     xy = []
@@ -101,18 +96,22 @@ def __preprocess_data__(intents):
     return X_train, y_train, all_words, tags
 
 
-X_train, y_train, all_words, tags = __preprocess_data__(intents)
+def train(intents_path, data_path):
 
-num_epochs = 1000
-batch_size = 8
-learning_rate = 0.001
-input_size = len(X_train[0])
-hidden_size = 8
-output_size = len(tags)
-print(input_size, output_size)
+    model_path = os.path.abspath(intents_path)
 
+    with open(model_path, 'r') as file:
+        intents = json.load(file)
 
-def train():
+    X_train, y_train, all_words, tags = preprocess_data(intents)
+
+    num_epochs = 1000
+    batch_size = 8
+    learning_rate = 0.001
+    input_size = len(X_train[0])
+    hidden_size = 8
+    output_size = len(tags)
+    print(input_size, output_size)
     dataset = ChatDataset(X_train, y_train)
     train_loader = DataLoader(dataset=dataset, batch_size=batch_size, shuffle=True, num_workers=0)
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -144,13 +143,12 @@ def train():
         "all_words": all_words,
         "tags": tags
     }
-    data_path = os.path.abspath("data.pth")
-    FILE = data_path
+    FILE = os.path.abspath(data_path)
     torch.save(data, FILE)
     print(f'Training complete. File saved to {FILE}')
 
 
-def chat(message, threshold, intents, data_path):
+def chat(message, threshold, intents_path, data_path):
     # Load other data
     data = torch.load(data_path)
     input_size = data["input_size"]
@@ -174,29 +172,45 @@ def chat(message, threshold, intents, data_path):
     probs = torch.softmax(output, dim=1)
     prob = probs[0][predicted.item()]
     if prob.item() > threshold:
-        for intent in intents:
+        with open(intents_path, 'r') as file:
+            intents = json.load(file)
+        for intent in intents['intents']:
             if tag == intent["tag"]:
                 return random.choice(intent['responses'])
     else:
         return "I do not understand... Could you please rephrase?"
 
 
+class Initialize:
+    def __init__(self, intents_path, data_path, train_model):
+        self.intents_path = intents_path
+        self.data_path = data_path
+        self.train_model = train_model
+        self.intents = None
+
+    def train(self):
+        if self.train_model:
+            train(self.intents_path, self.data_path)
+
+    def load_intents(self):
+        with open(self.intents_path, 'r') as file:
+            self.intents = json.load(file)
+
+    def chat(self, message, accuracy):
+        self.train()
+        if not self.intents:
+            self.load_intents()
+
+        response = chat(message, accuracy, self.intents_path, self.data_path)
+        return response
+
+"""
+These are some just test case for development.
+"""
 train_model = True
-
-if train_model:
-    train()
-
-intents_path = os.path.abspath("../../intents.json")
-data_path = os.path.abspath("data.pth")
+intents_path = "../../../intents.json"
+data_path = "../../data.pth"
 threshold = 0.75
-
-# Load intents file
-with open(intents_path, 'r') as file:
-    intents = json.load(file)["intents"]
-
-while True:
-    message = input("User: ")
-    if message.lower() == "quit":
-        break
-    response = chat(message, threshold, intents, data_path)
-    print("Assistant:", response)
+initialize_instance = Initialize(intents_path, data_path, train_model)
+response = initialize_instance.chat("Hi", threshold)
+print(response)
