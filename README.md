@@ -1,3 +1,17 @@
+<p align="center">
+  <img src="https://github.com/muhammad-fiaz/neurolink/assets/75434191/82fbf702-43e2-46e6-8e01-11758fa26310" alt="Neurolink GIF" width="500" height="auto">
+</p>
+
+[![Python](https://img.shields.io/badge/python-%3E%3D3.8-blue.svg)](https://www.python.org/downloads/release/python-380/)
+[![PyPI](https://img.shields.io/badge/PyPI-v-green.svg)](https://pypi.org/project/neurolink/)
+[![Anaconda](https://img.shields.io/badge/Anaconda-v-green.svg)](https://anaconda.org/conda-forge/neurolink)
+[![Commits](https://img.shields.io/github/last-commit/muhammad-fiaz/neurolink?style=flat&logo=git&logoColor=white&color=blue)](https://github.com/muhammad-fiaz/neurolink/commits/master)
+[![Open Issues](https://img.shields.io/badge/issues-open-green.svg)](https://github.com/muhammad-fiaz/neurolink/issues)
+[![Version](https://img.shields.io/badge/version-0.0.0-blue.svg)](https://pypi.org/project/neurolink/0.0.0/)
+[![Python](https://img.shields.io/badge/community-python-brightgreen.svg)](https://www.python.org/)
+[![Docs](https://img.shields.io/badge/docs-neurolink-blue.svg)](https://github.com/muhammad-fiaz/neurolink#readme)
+
+
 # NeuroLink
 
 NeuroLink is a Python package that aims to provide various AI capabilities, including a chatbot, image processing, audio processing, Django support, and more. It utilizes TensorFlow and other related technologies for natural language processing and AI tasks.
@@ -65,3 +79,13 @@ Please feel free to explore the repository, open issues, and provide feedback.
 # License
 
 This project is licensed under the [Apache License, Version 2.0 ](https://github.com/muhammad-fiaz/neurolink/blob/main/LICENSE).
+     
+     
+<p>
+  <img src="https://github.com/muhammad-fiaz/neurolink/assets/75434191/5ede394c-99fa-4f7f-8153-0de7f34b15c2" alt="Neurolink Logo" width="200">
+</p>
+
+Happy Coding!
+
+
+
